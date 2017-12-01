@@ -1,0 +1,35 @@
+<h4> Comments ({{ comment_list|length }}):</h4>
+<form action="{% url 'post:comment' post.pk %}" method="post" name="comment_form">
+    {% csrf_token %}
+    <textarea rows="5" cols="40" name="comment_text" placeholder="Write your comment here..."></textarea>
+    <br>
+    <input type="submit" value="Comment" />
+</form>
+{% if comment_list %}
+    <ul>
+    {% for comment in comment_list %}
+        <li>
+            {{ comment.author }}
+            {{ comment.date }}
+            {{ comment.text }}
+        </li>
+    {% endfor %}
+    </ul>
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+{% else %}
+    <p>No comments yet.</p>
+{% endif %}
