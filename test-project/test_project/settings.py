@@ -171,3 +171,7 @@ LOGIN_REQUIRED_URLS_EXCEPTIONS = (
         (r'^/authentication/activate/(?P<uid_b64>[0-9A-Za-z_\-]+)/'
          r'(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$'),
     )
+
+# Static root
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
