@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ post.title }}</h1>
+
+<p>
+    {{ post.body }}
+    <br>
+    <br>{{ post.date }}
+    <br>{{ post.author }}
+</p>
+    <form action="{% url 'post:like' post.id%}" method="post" >
+        {% csrf_token %}
+        <input type="submit" value="{% if like %} Unlike {% else %} Like {% endif %}({{ post.likes.active|length }})" />
+    </form>
+    {% include 'comment/comment_list.html' %}
+{% endblock %}
