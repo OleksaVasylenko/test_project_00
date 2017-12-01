@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=!d*z$2(f80gbgqh7dd3rrnurr(p&9w8n!2#33hm1_f!uhr51_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['warm-basin-57114.herokuapp.com', 'localhost', '127.0.0.1']
 
